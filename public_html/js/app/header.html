@@ -9,12 +9,30 @@
             <li class="nav-item" ng-class="{'active': (isActive('/home') || isActive('/'))}">
                 <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item" ng-class="{'active': isActive('/tipousuario/edit')}">
-                <a class="nav-link" href="tipousuario/edit">Tipousuario Edit</a>
+            <li class="nav-item dropdown" ng-class="{'active': isActive('/usuario/edit')}">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Usuario</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="usuario/usuario">Usuario</a>
+          <a class="dropdown-item" href="usuario/tipousuario">Tipousuario</a>
+                </div>
             </li>
-            <li class="nav-item" ng-class="{'active': isActive('/tipousuario/plist')}">
-                <a class="nav-link" href="tipousuario/plist">Tipousuario Plist</a>
+            <li class="nav-item dropdown" ng-class="{'active': isActive('/usuario/edit')}">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Producto</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+          <a class="dropdown-item" href="producto/producto">Producto</a>
+          <a class="dropdown-item" href="producto/tipoproducto">Tipoproducto</a>
+                </div>
             </li>
+            <li class="nav-item dropdown" ng-class="{'active': isActive('/usuario/edit')}">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Factura</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+          <a class="dropdown-item" href="factura/factura">Factura</a>
+          <a class="dropdown-item" href="factura/linea">Línea</a>
+                </div>
+            </li>
+<!--            <li class="nav-item" ng-class="{'active': isActive('/tipousuario/plist')}">
+                <a class="nav-link" href="#">Tipousuario Plist</a>
+            </li>-->
         </ul>
         <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

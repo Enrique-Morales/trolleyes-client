@@ -1,0 +1,92 @@
+<header ng-include="'js/app/header.html'"></header>
+<div class="container-fluid">
+    <div class="row">      
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4" style="margin-top: 50px">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">PRODUCTOS</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
+                </div>
+            </div> 
+            
+            <div class="row" style="margin: 70px;">
+        <div class="col-6">
+            Selecciona el número de registros por página
+        </div>
+        <div class="col-6">
+            <select class="form-control" id="exampleFormControlSelect1" ng-change="update()" ng-model="rpp">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </div>    
+    </div>
+
+            <nav aria-label="paginacion">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" ng-show="page>1" href="producto/producto/{{rpp}}/{{page-1}}">Previous</a>
+                    </li>
+                    
+                    <li class="page-item" ng-class="{'active':(1==page)}">
+                        <a class="page-link" href="producto/producto/{{rpp}}/1" ng-click="pagination(1)">1</a>
+                    </li>
+                    
+                    <li ng-show="before">.........</li>
+                    
+                    <li class="page-item" ng-class="{'active':(p==page)}" ng-repeat="p in list">
+                        <a class="page-link" href="producto/producto/{{rpp}}/{{p}}" ng-click="pagination({p})">{{p}}</a>
+                    </li>
+                    
+                    <li ng-show="after">.........</li>
+                    
+                    <li class="page-item" ng-class="{'active':(page==totalPages)}" ng-show="totalPages>1">
+                        <a class="page-link" href="producto/producto/{{rpp}}/{{totalPages}}" ng-click="pagination(totalPages)">{{totalPages}}</a>
+                    </li>
+                    
+                    <li class="page-item">
+                        <a class="page-link" ng-show="page<totalPages" href="producto/producto/{{rpp}}/{{page--1}}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Existencias</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Tipo producto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dato in ajaxDataProductos| limitTo: limitNgRepeat: startNgRepeat">
+                        <th class="text-center">{{dato.id}}</th>
+                        <td class="text-center">{{dato.codigo}}</td>
+                        <td>{{dato.desc}}</td>
+                        <td class="text-center">{{dato.existencias}}</td>
+                        <td>{{dato.precio.toFixed(2)}} €</td>
+                        <td>{{dato.foto}}</td>
+                        <td class="text-center">{{dato.id_tipoProducto}}</td>
+                    </tr>
+                </tbody>
+                </table>
+
+            </div>
+        </main>
+    </div>
+</div>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>

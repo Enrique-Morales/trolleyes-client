@@ -1,0 +1,63 @@
+<header ng-include="'js/app/header.html'"></header>
+<main role="main" class="container">
+<h1 style="margin-top: 80px">FACTURA</h1>
+<div class="row" style="margin: 70px;">
+        <div class="col-6">
+            Selecciona el número de registros por página
+        </div>
+        <div class="col-6">
+            <select class="form-control" id="exampleFormControlSelect1" ng-change="update()" ng-model="selectedItem">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">IVA</th>
+                        <th scope="col">ID-Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dato in datos| limitTo: limitNgRepeat: startNgRepeat">
+                        <th class="text-center">{{dato.id}}</th>
+                        <td>{{dato.fecha}}</td>
+                        <td>{{dato.iva}}</td>
+                        <td>{{dato.id_usuario}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-3 mx-auto">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li ng-class="activeItem" ng-repeat="num in array" ng-click="loadTablePage(num)">
+                                <a class="page-link" href="#" ng-click="paginationClick(num)">{{num}}</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 mx-auto">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li ng-class="activeItem" ng-repeat="paginator in arrayPaginator" ng-click="loadTablePage(num)">
+                        <a class="page-link" href="#" >{{paginator}}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<footer class="footer" ng-include="'js/app/footer.html'"></footer>
